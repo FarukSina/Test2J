@@ -1,12 +1,14 @@
 package Controllers;
 
 import Models.Customer;
+import Utilities.DBUtility;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -31,7 +33,8 @@ public class CustomerViewController implements Initializable {
 
     @FXML
     private TableColumn<Customer, String> genderColumn;
-
+    @FXML
+    private TableColumn<Customer, String> cityColumn;
     @FXML
     private TableColumn<Customer, String> provinceColumn;
 
@@ -96,6 +99,22 @@ public class CustomerViewController implements Initializable {
 
         //configure the table columns
         configureTableColumns();
+        try {
+            allCustomers = DBUtility.getCustomers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("First Name"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("Last Name"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
+        genderColumn.setCellValueFactory(new PropertyValueFactory<>("Gender"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<>("City"));
+        provinceColumn.setCellValueFactory(new PropertyValueFactory<>("Province"));
+        bloodTypeColumn.setCellValueFactory(new PropertyValueFactory<>("Blood Type"));
+
+        tableView.getItems().addAll(allCustomers);
 
         //add a listener to the search TextField.  When ever there is a change in the
         //TextField, it will call the method setNameSearchTextField() - add your filtering

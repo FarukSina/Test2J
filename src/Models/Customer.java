@@ -6,11 +6,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Customer {
-    private int id;
-    private String gender, firstName, lastName;
-    private String province, bloodType;
+    private int id, age;
+    private String gender, firstName, lastName, phoneNumber;
+    private String province, bloodType, city;
     private LocalDate birthday;
-
     public Customer(int id, String gender, String firstName, String lastName, String province, String bloodType, String birthday) {
         setId(id);
         setGender(gender);
@@ -19,7 +18,22 @@ public class Customer {
         setProvince(province);
         setbloodType(bloodType);
         setBirthday(birthday);
+        setCity(city);
     }
+
+
+
+    public Customer(int id, String firstName, String lastName, int age, String gender, String city, String province, String bloodType) {
+        setId(id);
+        setGender(gender);
+        setFirstName(firstName);
+        this.age = getAge();
+        setLastName(lastName);
+        setProvince(province);
+        setbloodType(bloodType);
+        setCity(city);
+    }
+
 
     public int getId() {
         return id;
@@ -110,5 +124,20 @@ public class Customer {
     public int getAge()
     {
         return 0;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

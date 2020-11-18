@@ -31,28 +31,18 @@ public class DBUtility {
             statement = conn.createStatement();
 
             //3. create/execute the sql query
-            resultSet = statement.executeQuery("SELECT  number, givenname, surname,age,gender,city,province,telephonenumber FROM customers LIMIT 0 1000");
-
-            public Customer(int id, String gender, String firstName, String lastName, String province, String bloodType, String birthday) {
-                setId(id);
-                setGender(gender);
-                setFirstName(firstName);
-                setLastName(lastName);
-                setProvince(province);
-                setbloodType(bloodType);
-                setBirthday(birthday);
-            }
+            resultSet = statement.executeQuery("SELECT  number, givenname, surname,age,gender,city,province,bloodtype FROM customers LIMIT 1000");
             //4. loop over the results
             while (resultSet.next()) {
                 Customer newFood = new Customer(
                         resultSet.getInt("number"),
                         resultSet.getString("givenname"),
                         resultSet.getString("surname"),
-                        resultSet.getString("age"),
+                        resultSet.getInt("age"),
                         resultSet.getString("gender"),
                         resultSet.getString("city"),
                         resultSet.getString("province"),
-                        resultSet.getString("telephonenumber")
+                        resultSet.getString("bloodtype")
                 );
                 customers.add(newFood);
             }
