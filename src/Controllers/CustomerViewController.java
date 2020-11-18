@@ -91,12 +91,10 @@ public class CustomerViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
         //This set's up the checkbox objects to filter by province
         //and puts them all in an ArrayList<CheckBox> called
         //checkBoxes.  This way you can loop over the CheckBox objects
         configureCheckBoxes();
-
         //configure the table columns
         configureTableColumns();
         try {
@@ -115,6 +113,9 @@ public class CustomerViewController implements Initializable {
         bloodTypeColumn.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
         tableView.getItems().addAll(allCustomers);
+        updateLabels();
+        selectAllProvinces();
+        checkBoxChanged();
 
 
         //add a listener to the search TextField.  When ever there is a change in the
@@ -122,6 +123,23 @@ public class CustomerViewController implements Initializable {
         //code in there
         searchTextField.textProperty().addListener((obs, oldValue, searchString)->
                 search(searchString));
+
+        searchTextField.textProperty().addListener((obs, oldValue, newValue)->{
+            ArrayList<Customer> filtered = new ArrayList<>();
+
+            //loop over the students and see which ones contain the text from the
+            //search field (searchTextField)
+            for (Customer cust: allCustomers)
+            {
+                if (cust.contains(searchTextField.getText()))
+                    filtered.add(cust);
+            }
+
+            //clear out the students from the tableview and add only the filtered ones
+            tableView.getItems().clear();
+            tableView.getItems().addAll(filtered);
+            updateLabels();
+        });
     }
 
 
@@ -137,6 +155,13 @@ public class CustomerViewController implements Initializable {
                 nbCheckBox,nlCheckBox,nsCheckBox,ntCheckBox,onCheckBox,qcCheckBox,skCheckBox));
     }
 
+    private void updateLabels()
+    {
+        rowSelectedLabel.setText("Rows returned: "+tableView.getItems().size());
+        malePercentLabel.setText("male: "+tableView.getItems().size());
+        femalePercentLabel.setText("female: "+tableView.getRowFactory());
+        averageAgeLabel.setText("Average Age:" + tableView.getRowFactory());
+    }
 
     /**
      * This method configures the table columns with value factories
@@ -170,7 +195,27 @@ public class CustomerViewController implements Initializable {
      */
     @FXML private void checkBoxChanged()
     {
+        if(!abCheckBox.isSelected()) {
+            abCheckBox.setSelected(false);
+        }
+        else {
+            abCheckBox.setSelected(true);
+        }
+    }
 
+
+    @FXML
+    private void selectAllProvinces() {
+         abCheckBox.setSelected(true);
+          mbCheckBox.setSelected(true);
+         bcCheckBox.setSelected(true);
+         nbCheckBox.setSelected(true);
+          nlCheckBox.setSelected(true);
+         nsCheckBox.setSelected(true);
+         ntCheckBox.setSelected(true);
+         onCheckBox.setSelected(true);
+         qcCheckBox.setSelected(true);
+         skCheckBox.setSelected(true);
     }
 }
 

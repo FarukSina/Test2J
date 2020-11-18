@@ -143,4 +143,13 @@ public class Customer {
     public String toString() {
         return( firstName + lastName + province);
     }
+    public boolean contains(String searchText)
+    {
+        String studentNumString = Integer.toString(id);
+        searchText = searchText.toLowerCase();
+
+        return firstName.toLowerCase().contains(searchText) ||
+                lastName.toLowerCase().contains(searchText) ||
+                studentNumString.contains(searchText);
+    }
 }

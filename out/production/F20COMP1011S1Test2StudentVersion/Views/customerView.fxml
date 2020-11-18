@@ -49,7 +49,7 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label text="Provinces To Include" />
-                  <Button mnemonicParsing="false" text="Select all Provinces" />
+                  <Button mnemonicParsing="false" onAction="#selectAllProvinces" text="Select all Provinces" />
                </children>
             </HBox>
             <GridPane prefHeight="160.0" prefWidth="270.0">
