@@ -31,14 +31,13 @@ public class DBUtility {
             statement = conn.createStatement();
 
             //3. create/execute the sql query
-            resultSet = statement.executeQuery("SELECT  number, givenname, surname,age,gender,city,province,bloodtype FROM customers LIMIT 1000");
+            resultSet = statement.executeQuery("SELECT  number, givenname, surname,gender,city,province,bloodtype FROM customers LIMIT 1000");
             //4. loop over the results
             while (resultSet.next()) {
                 Customer newFood = new Customer(
                         resultSet.getInt("number"),
                         resultSet.getString("givenname"),
                         resultSet.getString("surname"),
-                        resultSet.getInt("age"),
                         resultSet.getString("gender"),
                         resultSet.getString("city"),
                         resultSet.getString("province"),

@@ -17,17 +17,15 @@ public class Customer {
         setLastName(lastName);
         setProvince(province);
         setbloodType(bloodType);
-        setBirthday(birthday);
         setCity(city);
     }
 
 
 
-    public Customer(int id, String firstName, String lastName, int age, String gender, String city, String province, String bloodType) {
+    public Customer(int id, String firstName,  String gender, String city, String province, String bloodType) {
         setId(id);
         setGender(gender);
         setFirstName(firstName);
-        this.age = getAge();
         setLastName(lastName);
         setProvince(province);
         setbloodType(bloodType);
@@ -119,6 +117,8 @@ public class Customer {
     }
 
     public void setBirthday(String birthday) {
+        LocalDate date = LocalDate.of(1975,8,27);
+        this.birthday = date;
     }
 
     public int getAge()
@@ -139,5 +139,10 @@ public class Customer {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return (firstName + phoneNumber  );
     }
 }

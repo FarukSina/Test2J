@@ -1,3 +1,4 @@
+import Utilities.DBUtility;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,5 +19,7 @@ public class Main extends Application {
         stage.getIcons().add(new Image("Views/laughIcon.png"));
         stage.setTitle("Customers");
         stage.show();
+
+        System.out.println(DBUtility.getCustomers());
     }
 }
