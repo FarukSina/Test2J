@@ -1,6 +1,9 @@
 package Models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Customer {
     private int id;
@@ -9,12 +12,12 @@ public class Customer {
     private LocalDate birthday;
 
     public Customer(int id, String gender, String firstName, String lastName, String province, String bloodType, String birthday) {
-        this.id = id;
-        this.gender = gender;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.province = province;
-        this.bloodType = bloodType;
+        setId(id);
+        setGender(gender);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setProvince(province);
+        setbloodType(bloodType);
         setBirthday(birthday);
     }
 
@@ -22,8 +25,11 @@ public class Customer {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
+        if (id>0)
             this.id = id;
+        else
+            throw new IllegalArgumentException("ID must be greater than 0");
     }
 
     public String getGender() {
@@ -31,7 +37,10 @@ public class Customer {
     }
 
     public void setGender(String gender) {
+        if(gender.toLowerCase() == "Male" || gender.toLowerCase() =="Female")
             this.gender = gender;
+        else
+            throw new IllegalArgumentException("Gender must be Male or Female");
     }
 
     public String getFirstName() {
@@ -39,7 +48,10 @@ public class Customer {
     }
 
     public void setFirstName(String firstName) {
+        if(firstName.length() <=40 || firstName.length()>=1)
         this.firstName = firstName;
+        else
+            throw new IllegalArgumentException("FirstName's length must be between 1 and 40");
     }
 
     public String getLastName() {
@@ -47,15 +59,27 @@ public class Customer {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if(firstName.length() <=40 || firstName.length()>=1)
+            this.lastName = lastName;
+        else
+            throw new IllegalArgumentException("LastName's length must be between 1 and 40");
     }
 
     public String getProvince() {
         return province;
     }
+    public static ArrayList<String> getProvinceList()
+    {
+        ArrayList<String> provinces = new ArrayList(Arrays.asList("ON", "QC", "AB", "NS", "BC", "SK", "NT", "NB", "MB", "NL"));
+        Collections.sort(provinces);
+        return provinces;
+    }
 
     public void setProvince(String province) {
-        this.province = province;
+        if (getProvinceList().contains(province))
+            this.province = province;
+        else
+            throw new IllegalArgumentException("Province must be in the list: "+getProvinceList());
     }
 
     public String getBloodType() {
