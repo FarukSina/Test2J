@@ -74,6 +74,13 @@ public class Customer {
         Collections.sort(provinces);
         return provinces;
     }
+    public static ArrayList<String> getBloodTypeList()
+    {
+
+        ArrayList<String> bloodTypes = new ArrayList(Arrays.asList("B+", "O+", "AB+", "O-", "A+", "B-", "A-", "AB-"));
+        Collections.sort(bloodTypes);
+        return bloodTypes;
+    }
 
     public void setProvince(String province) {
         if (getProvinceList().contains(province))
@@ -87,7 +94,10 @@ public class Customer {
     }
 
     public void setbloodType(String bloodType) {
+        if(getBloodTypeList().contains(bloodType))
         this.bloodType = bloodType;
+        else
+            throw new IllegalArgumentException("Blood Type must be in the list: "+getBloodTypeList());
     }
 
     public LocalDate getBirthday() {
