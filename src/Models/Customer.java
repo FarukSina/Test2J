@@ -10,7 +10,7 @@ public class Customer {
     private String gender, firstName, lastName, phoneNumber;
     private String province, bloodType, city;
     private LocalDate birthday;
-    public Customer(int id, String gender, String firstName, String lastName, String province, String bloodType, String birthday) {
+    public Customer(int id, String gender, String firstName, String lastName, String birthday, String city, String province, String bloodType) {
         setId(id);
         setGender(gender);
         setFirstName(firstName);
@@ -18,19 +18,19 @@ public class Customer {
         setProvince(province);
         setbloodType(bloodType);
         setCity(city);
+        setBirthday(birthday);
     }
 
 
-
-    public Customer(int id, String firstName,  String gender, String city, String province, String bloodType) {
-        setId(id);
-        setGender(gender);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setProvince(province);
-        setbloodType(bloodType);
-        setCity(city);
-    }
+//    public Customer( String firstName, String lastname, String gender, String city, String province, String bloodType) {
+//        setId(id);
+//        setGender(gender);
+//        setFirstName(firstName);
+//        setLastName(lastName);
+//        setProvince(province);
+//        setbloodType(bloodType);
+//        setCity(city);
+//    }
 
 
     public int getId() {
@@ -49,10 +49,8 @@ public class Customer {
     }
 
     public void setGender(String gender) {
-        if(gender.toLowerCase() == "Male" || gender.toLowerCase() =="Female")
             this.gender = gender;
-        else
-            throw new IllegalArgumentException("Gender must be Male or Female");
+
     }
 
     public String getFirstName() {
@@ -143,6 +141,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return (firstName + phoneNumber  );
+        return( firstName + lastName + province);
     }
 }

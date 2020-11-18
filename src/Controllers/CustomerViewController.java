@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -102,21 +101,21 @@ public class CustomerViewController implements Initializable {
         configureTableColumns();
         try {
             allCustomers = DBUtility.getCustomers();
-            System.out.println(allCustomers);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("First Name"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("Last Name"));
-        ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
-        genderColumn.setCellValueFactory(new PropertyValueFactory<>("Gender"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<>("City"));
-        provinceColumn.setCellValueFactory(new PropertyValueFactory<>("Province"));
-        bloodTypeColumn.setCellValueFactory(new PropertyValueFactory<>("Blood Type"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("birthday"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
+        provinceColumn.setCellValueFactory(new PropertyValueFactory<>("province"));
+        bloodTypeColumn.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
         tableView.getItems().addAll(allCustomers);
+
 
         //add a listener to the search TextField.  When ever there is a change in the
         //TextField, it will call the method setNameSearchTextField() - add your filtering
