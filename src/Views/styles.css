@@ -1,0 +1,67 @@
+.root
+{
+    -fx-background-color: linear-gradient(from 10px 10px to 400px 400px, #3D353C, #454654);
+    -fx-font-size: 18;
+}
+
+.label
+{
+    -fx-text-fill: #EBA27A;
+}
+
+#graphLabel
+{
+    -fx-text-fill: #636060;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.radio-button
+{
+    -fx-text-fill: #636060;
+}
+.check-box
+{
+    -fx-text-fill: #EBA27A;
+}
+
+.table-view
+{
+    -fx-font-size: 14px;
+}
+
+.combo-box
+{
+    -fx-background-color: #9fbbc4;
+    -fx-background-radius: 10px;
+}
+
+.button
+{
+    -fx-background-radius: 10px;
+}
+
+.button:hover {
+    -fx-background-color: #b89791;
+}
+
+#header
+{
+    -fx-font-size: 40;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.3), 10, -10.5, 0.0, 0.5);
+}
+
+#graphArea
+{
+    -fx-padding: 10;
+    -fx-background-color: #cfcccc;
+    -fx-background-radius: 20;
+}
+
+#chartText
+{
+    -fx-text-fill: #636060;
+    -fx-tick-label-fill: #636060;
+}
+
+
